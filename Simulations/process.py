@@ -169,7 +169,6 @@ def mirror_and_rotate(data):
             outdata[key]["lcs"].append(data[key]['lcs'])
             outdata[key]["mds"].extend(data[key]['mds'])
 
-            print(key, len(outdata[key]["ims"]))
 
         # Stack results
         outdata[key]["ims"] = np.concatenate(outdata[key]["ims"])
@@ -189,8 +188,14 @@ def run(directory, configuration, show=True):
     # Process
     outdata = process(images, metadata, band='g')
 
+    for key in outdata:
+        print('start', key, len(outdata[key]['ims']))
+    
     # Mirror and Rotate
     outdata = mirror_and_rotate(outdata)
+
+    for	key in outdata:
+        print('total', key, len(outdata[key]['ims']))
     
     # Create arrays for each cadence length and save
     for key in outdata:
