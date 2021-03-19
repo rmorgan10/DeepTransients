@@ -1,0 +1,614 @@
+
+DATASET:
+    NAME: tester
+    PARAMETERS:
+        SIZE: 40000
+        SEED: 6
+        OUTDIR: full_data
+        
+COSMOLOGY:
+    PARAMETERS:
+        H0: 70
+        Om0: 0.30
+            
+IMAGE:
+    PARAMETERS:
+        exposure_time: 90.0
+        numPix: 45
+        pixel_scale: 0.263
+        psf_type: 'GAUSSIAN'
+        read_noise: 7
+        ccd_gain: 6.083
+
+SURVEY:
+    PARAMETERS:
+        BANDS: g,r,i,z
+        seeing: 
+            DISTRIBUTION:
+                NAME: des_seeing
+                PARAMETERS: None
+        magnitude_zero_point:
+            DISTRIBUTION:
+                NAME: des_magnitude_zero_point
+                PARAMETERS: None            
+        num_exposures: 1
+        sky_brightness: 
+            DISTRIBUTION:
+                NAME: des_sky_brightness
+                PARAMETERS: None
+
+
+SPECIES:
+    GALAXY_1:
+        NAME: LENS
+        LIGHT_PROFILE_1: 
+            NAME: SERSIC_ELLIPSE
+            PARAMETERS:
+                magnitude: -5 # Overwritten by USERDIST
+                center_x: 0.0
+                center_y: 0.0
+                R_sersic: 0.0 # Overwritten by USERDIST
+                n_sersic: 0.0 # Overwritten by USERDIST
+                e1: 0.0  # Overwritten by USERDIST
+                e2: 0.0  # Overwritten by USERDIST
+
+        MASS_PROFILE_1:
+            NAME: SIE 
+            PARAMETERS:
+                sigma_v: -1.0 # Overwritten by USERDIST
+                e1: 0.0 # Overwritten by USERDIST
+                e2: 0.0 # Overwritten by USERDIST
+                center_x: 0.0
+                center_y: 0.0
+                    
+    GALAXY_2:
+        NAME: SOURCE
+        LIGHT_PROFILE_1:
+            NAME: SERSIC_ELLIPSE
+            PARAMETERS:
+                center_x:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: -0.05
+                            maximum: 0.05
+                center_y:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: -0.05
+                            maximum: 0.05
+                magnitude: -5 # Overwritten by USERDIST
+                R_sersic: 0.0 # Overwritten by USERDIST
+                n_sersic: 0.0 # Overwritten by USERDIST
+                e1: 0.0 # Overwritten by USERDIST
+                e2: 0.0 # Overwritten by USERDIST
+                    
+    GALAXY_3:
+        NAME: SOURCE_off_axis
+        LIGHT_PROFILE_1:
+            NAME: SERSIC_ELLIPSE
+            PARAMETERS:
+                magnitude: -5 # Overwritten by USERDIST
+                R_sersic: 0.0 # Overwritten by USERDIST
+                n_sersic: 0.0 # Overwritten by USERDIST
+                e1: 0.0 # Overwritten by USERDIST
+                e2: 0.0 # Overwritten by USERDIST
+                center_x:
+                    DISTRIBUTION:
+                        NAME: symmetric_uniform_annulus
+                        PARAMETERS:
+                            r1: 1.0
+                            r2: 4.0
+                center_y:
+                    DISTRIBUTION:
+                        NAME: symmetric_uniform_annulus
+                        PARAMETERS:
+                            r1: 1.0
+                            r2: 4.0
+                                
+    GALAXY_4:
+        NAME: DarkGalaxy
+        LIGHT_PROFILE_1:
+            NAME: SERSIC_ELLIPSE
+            PARAMETERS:
+                magnitude: 99 
+                R_sersic: 0.5
+                n_sersic: 0.5
+                e1: 0.0
+                e2: 0.0
+                center_x: 0.0
+                center_y: 0.0
+        SHEAR_PROFILE_1: 
+            NAME: SHEAR
+            PARAMETERS:
+                gamma1:
+                    DISTRIBUTION:
+                        NAME: normal
+                        PARAMETERS:
+                            mean: 0.0
+                            std: 0.1
+                gamma2:
+                    DISTRIBUTION:
+                        NAME: normal
+                        PARAMETERS:
+                            mean: 0.0
+                            std: 0.1
+            
+                    
+    POINTSOURCE_1:
+        NAME: SNIa
+        MODEL: ia_random
+        HOST: SOURCE
+        PARAMETERS:
+            magnitude: -5.0 # Overwritten by lightcurve
+            sep_unit: arcsec
+            sep:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 0.5
+                        maximum: 2.0
+    POINTSOURCE_2:
+        NAME: SNCC
+        MODEL: cc_random
+        HOST: SOURCE
+        PARAMETERS:
+            magnitude: -5.0 # Overwritten by lightcurve
+            sep_unit: arcsec
+            sep:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 0.5
+                        maximum: 2.0
+                            
+    POINTSOURCE_3:
+        NAME: Gal
+        HOST: LENS
+        MODEL: static
+        PARAMETERS:
+            magnitude: 100.0
+                
+    POINTSOURCE_4:
+        NAME: Star
+        HOST: Foreground
+        PARAMETERS:
+            magnitude: -5 # Overwritten by USERDIST
+                
+    POINTSOURCE_5:
+        NAME: CenteredStar
+        HOST: DarkGalaxy
+        PARAMETERS:
+            magnitude: -5 # Overwritten by USERDIST
+                
+    POINTSOURCE_6:
+        NAME: Gal2
+        HOST: DarkGalaxy
+        MODEL: static
+        PARAMETERS:
+            magnitude: 100.0
+
+    POINTSOURCE_7:
+        NAME: normalSNIa
+        MODEL: ia_random
+        HOST: LENS
+        PARAMETERS:
+            magnitude: -5.0 # Overwritten by lightcurve
+            sep_unit: arcsec
+            sep:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 0.5
+                        maximum: 2.0
+    POINTSOURCE_8:
+        NAME: normalSNCC
+        MODEL: cc_random
+        HOST: LENS
+        PARAMETERS:
+            magnitude: -5.0 # Overwritten by lightcurve
+            sep_unit: arcsec
+            sep:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 0.5
+                        maximum: 2.0   
+                            
+    NOISE_1:
+        NAME: POISSON_NOISE
+        PARAMETERS:
+            mean:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 30.0
+                        maximum: 100.0
+                    
+DISTRIBUTIONS:
+    USERDIST_1:
+        FILENAME: user_dists/full_config_1.txt
+        MODE: sample
+    USERDIST_2:
+        FILENAME: user_dists/full_config_2.txt
+        MODE: sample
+    USERDIST_3:
+        FILENAME: user_dists/full_config_3.txt
+        MODE: sample
+    USERDIST_4:
+        FILENAME: user_dists/full_config_4.txt
+        MODE: sample
+    USERDIST_5:
+        FILENAME: user_dists/full_config_5.txt
+        MODE: sample
+    USERDIST_6:
+        FILENAME: user_dists/full_config_6.txt
+        MODE: sample
+    USERDIST_7:
+        FILENAME: user_dists/full_config_7.txt
+        MODE: sample
+    USERDIST_8:
+        FILENAME: user_dists/full_config_8.txt
+        MODE: sample
+    USERDIST_9:
+        FILENAME: user_dists/full_config_9.txt
+        MODE: sample
+    USERDIST_10:
+        FILENAME: user_dists/full_config_10.txt
+        MODE: sample
+    USERDIST_11:
+        FILENAME: user_dists/full_config_11.txt
+        MODE: sample
+    USERDIST_12:
+        FILENAME: user_dists/full_config_12.txt
+        MODE: sample
+
+    USERDIST_13:
+        FILENAME: user_dists/full_config_14.txt
+        MODE: sample
+    USERDIST_14:
+        FILENAME: user_dists/full_config_15.txt
+        MODE: sample
+            
+    USERDIST_15:
+        FILENAME: user_dists/full_config_16.txt
+        MODE: sample
+    USERDIST_16:
+        FILENAME: user_dists/full_config_17.txt
+        MODE: sample
+   
+    
+GEOMETRY:
+    CONFIGURATION_1:
+        NAME: GalGal
+        FRACTION: 0.0625
+        PLANE_1:
+            OBJECT_1: LENS
+            OBJECT_2: Gal
+            PARAMETERS:
+                REDSHIFT: 0.5 # Overwritten by USERDIST
+        PLANE_2:
+            OBJECT_1: SOURCE
+            PARAMETERS:
+                REDSHIFT: 1.0 # Overwritten by USERDIST
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['Gal']
+                    
+    CONFIGURATION_2:
+        NAME: TwoGal
+        FRACTION: 0.0277
+        PLANE_1:
+            OBJECT_1: LENS
+            OBJECT_2: Gal
+            OBJECT_3: SOURCE_off_axis
+            PARAMETERS:
+                REDSHIFT: 0.5 # Overwritten by USERDIST
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['Gal']
+                
+    CONFIGURATION_3:
+        NAME: LSNEIa
+        FRACTION: 0.125
+        PLANE_1:
+            OBJECT_1: LENS
+            PARAMETERS:
+                REDSHIFT: 0.4 # Overwritten by USERDIST
+                    
+        PLANE_2:
+            OBJECT_1: SOURCE
+            OBJECT_2: SNIa
+            PARAMETERS:
+                REDSHIFT:  # Overwritten by USERDIST, but need distribution to create large SNe lightcurve bank
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.3
+                            maximum: 1.2
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['SNIa']
+            PEAK:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 0
+                        maximum: 1856
+        
+    CONFIGURATION_4:
+        NAME: LSNECC
+        FRACTION: 0.125
+        PLANE_1:
+            OBJECT_1: LENS
+            PARAMETERS:
+                REDSHIFT: 0.4 # Overwritten by USERDIST
+        PLANE_2:
+            OBJECT_1: SOURCE
+            OBJECT_2: SNCC
+            PARAMETERS:
+                REDSHIFT:  # Overwritten by USERDIST, but need distribution to create large SNe lightcurve bank
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.3
+                            maximum: 1.2
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['SNCC']
+            PEAK:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 0
+                        maximum: 1856
+                
+    CONFIGURATION_5:
+        NAME: JustAGalaxy
+        FRACTION: 0.0277
+        PLANE_1:
+            OBJECT_1: LENS
+            OBJECT_2: Gal
+            PARAMETERS:
+                REDSHIFT: 0.5 # Overwritten by USERDIST
+
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['Gal']
+                
+    CONFIGURATION_6:
+        NAME: BunchOfGalaxies
+        FRACTION: 0.0625
+        PLANE_1:
+            OBJECT_1: LENS
+            OBJECT_2: Gal
+            OBJECT_3: SOURCE_off_axis
+            PARAMETERS:
+                REDSHIFT: 0.5 # Overwritten by USERDIST
+        PLANE_2:
+            OBJECT_1: SOURCE
+            PARAMETERS:
+                REDSHIFT: 1.0 # Overwritten by USERDIST
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['Gal']
+
+    CONFIGURATION_7:
+        NAME: GalGalWithStar
+        FRACTION: 0.0625
+        PLANE_1:
+            OBJECT_1: LENS
+            OBJECT_2: Gal
+            OBJECT_3: Star
+            PARAMETERS:
+                REDSHIFT: 0.5 # Overwritten by USERDIST
+        PLANE_2:
+            OBJECT_1: SOURCE
+            PARAMETERS:
+                REDSHIFT: 1.0 # Overwritten by USERDIST
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['Gal']
+                    
+    CONFIGURATION_8:
+        NAME: TwoGalWithStar
+        FRACTION: 0.0277
+        PLANE_1:
+            OBJECT_1: LENS
+            OBJECT_2: Gal
+            OBJECT_3: SOURCE_off_axis
+            OBJECT_4: Star
+            PARAMETERS:
+                REDSHIFT: 0.5 # Overwritten by USERDIST
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['Gal']
+                
+    CONFIGURATION_9:
+        NAME: LSNEIaWithStar
+        FRACTION: 0.125
+        PLANE_1:
+            OBJECT_1: LENS
+            OBJECT_2: Star
+            PARAMETERS:
+                REDSHIFT: 0.4
+                    
+        PLANE_2:
+            OBJECT_1: SOURCE
+            OBJECT_2: SNIa
+            PARAMETERS:
+                REDSHIFT:  # Overwritten by USERDIST, but need distribution to create large SNe lightcurve bank
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.3
+                            maximum: 1.2
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['SNIa']
+            PEAK:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 0
+                        maximum: 1856
+        
+    CONFIGURATION_10:
+        NAME: LSNECCWithStar
+        FRACTION: 0.125
+        PLANE_1:
+            OBJECT_1: LENS
+            OBJECT_2: Star
+            PARAMETERS:
+                REDSHIFT: 0.4 # Overwritten by USERDIST
+        PLANE_2:
+            OBJECT_1: SOURCE
+            OBJECT_2: SNCC
+            PARAMETERS:
+                REDSHIFT:  # Overwritten by USERDIST, but need distribution to create large SNe lightcurve bank
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.3
+                            maximum: 1.2
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['SNCC']
+            PEAK:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 0
+                        maximum: 1856
+                
+    CONFIGURATION_11:
+        NAME: JustAGalaxyWithStar
+        FRACTION: 0.0277
+        PLANE_1:
+            OBJECT_1: LENS
+            OBJECT_2: Gal
+            OBJECT_3: Star
+            PARAMETERS:
+                REDSHIFT: 0.5 # Overwritten by USERDIST
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['Gal']
+                
+    CONFIGURATION_12:
+        NAME: BunchOfGalaxiesWithStar
+        FRACTION: 0.0625
+        PLANE_1:
+            OBJECT_1: LENS
+            OBJECT_2: Gal
+            OBJECT_3: SOURCE_off_axis
+            OBJECT_4: Star
+            PARAMETERS:
+                REDSHIFT: 0.5 # Overwritten by USERDIST
+        PLANE_2:
+            OBJECT_1: SOURCE
+            PARAMETERS:
+                REDSHIFT: 1.0 # Overwritten by USERDIST
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['Gal']
+
+                
+    CONFIGURATION_13:
+        NAME: EmptySky
+        FRACTION: 0.0277
+        PLANE_1:
+            OBJECT_1: DarkGalaxy
+            OBJECT_2: Gal2
+            PARAMETERS: 
+                REDSHIFT: 0.1                    
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['Gal2']
+        NOISE_SOURCE_1: POISSON_NOISE
+            
+                
+    
+    CONFIGURATION_14:
+        NAME: JustAStar
+        FRACTION: 0.0277
+        PLANE_1:
+            OBJECT_1: DarkGalaxy
+            OBJECT_2: CenteredStar
+            OBJECT_3: Gal2
+            PARAMETERS: 
+                REDSHIFT: 
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.001
+                            maximum: 0.01
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['Gal2']
+                
+    CONFIGURATION_15:
+        NAME: TwoStars
+        FRACTION: 0.0277
+        PLANE_1:
+            OBJECT_1: DarkGalaxy
+            OBJECT_2: CenteredStar
+            OBJECT_3: Gal2
+            OBJECT_4: Star
+            PARAMETERS: 
+                REDSHIFT: 
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.001
+                            maximum: 0.01
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['Gal2']
+                
+    CONFIGURATION_16:
+        NAME: JustASNIa
+        FRACTION: 0.0277
+        PLANE_1:
+            OBJECT_1: LENS
+            OBJECT_2: normalSNIa
+            PARAMETERS:
+                REDSHIFT:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.03
+                            maximum: 0.8
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['normalSNIa']
+            PEAK:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 0
+                        maximum: 1856
+                                
+    CONFIGURATION_17:
+        NAME: JustASNCC
+        FRACTION: 0.0277
+        PLANE_1:
+            OBJECT_1: LENS
+            OBJECT_2: normalSNCC
+            PARAMETERS:
+                REDSHIFT:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.03
+                            maximum: 0.8
+        TIMESERIES:
+            NITES: des_cadence.yaml
+            OBJECTS: ['normalSNCC']
+            PEAK:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 0
+                        maximum: 1856
+  

@@ -1,0 +1,292 @@
+
+DATASET:
+    NAME: tester
+    PARAMETERS:
+        SIZE: 4000
+        SEED: 6
+        OUTDIR: sim_data
+        
+COSMOLOGY:
+    PARAMETERS:
+        H0: 70
+        Om0: 0.30
+            
+IMAGE:
+    PARAMETERS:
+        exposure_time: 90.0
+        numPix: 45
+        pixel_scale: 0.263
+        psf_type: 'GAUSSIAN'
+        read_noise: 7
+        ccd_gain: 6.083
+
+SURVEY:
+    PARAMETERS:
+        BANDS: i
+        seeing: 
+            DISTRIBUTION:
+                NAME: des_seeing
+                PARAMETERS: None
+        magnitude_zero_point: 30.0
+        num_exposures: 1
+        sky_brightness: 99.0
+
+
+SPECIES:
+    GALAXY_1:
+        NAME: LENS
+        LIGHT_PROFILE_1: 
+            NAME: SERSIC_ELLIPSE
+            PARAMETERS:
+                magnitude:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 16
+                            maximum: 20
+                center_x: 0.0
+                center_y: 0.0
+                R_sersic:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.1
+                            maximum: 0.5
+                n_sersic: 
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.2
+                            maximum: 0.6
+                e1:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: -0.08
+                            maximum: 0.08
+                e2:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: -0.08
+                            maximum: 0.08
+        MASS_PROFILE_1:
+            NAME: SIE 
+            PARAMETERS:
+#                sigma_v: -1.0
+                theta_E:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 1.0
+                            maximum: 4.0
+                e1: 0.0
+                e2: 0.0
+                center_x: 0.0
+                center_y: 0.0
+    GALAXY_2:
+        NAME: SOURCE
+        LIGHT_PROFILE_1:
+            NAME: SERSIC_ELLIPSE
+            PARAMETERS:
+                center_x:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: -1
+                            maximum: 1
+                center_y:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: -1
+                            maximum: 1
+                magnitude:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 16
+                            maximum: 20
+                R_sersic:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.1
+                            maximum: 0.5
+                n_sersic: 
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.2
+                            maximum: 0.6
+                e1:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: -0.08
+                            maximum: 0.08
+                e2:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: -0.08
+                            maximum: 0.08 
+    GALAXY_3:
+        NAME: SOURCE_off_axis
+        LIGHT_PROFILE_1:
+            NAME: SERSIC_ELLIPSE
+            PARAMETERS:
+                magnitude:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 16
+                            maximum: 20
+                R_sersic:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.1
+                            maximum: 0.5
+                n_sersic: 
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: 0.2
+                            maximum: 0.6
+                e1:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: -0.08
+                            maximum: 0.08
+                e2:
+                    DISTRIBUTION:
+                        NAME: uniform
+                        PARAMETERS:
+                            minimum: -0.08
+                            maximum: 0.08
+                center_x:
+                    DISTRIBUTION:
+                        NAME: symmetric_uniform_annulus
+                        PARAMETERS:
+                            r1: 1.0
+                            r2: 4.0
+                center_y:
+                    DISTRIBUTION:
+                        NAME: symmetric_uniform_annulus
+                        PARAMETERS:
+                            r1: 1.0
+                            r2: 4.0
+                    
+    POINTSOURCE_1:
+        NAME: SNIa
+        MODEL: ia_random
+        HOST: SOURCE
+        PARAMETERS:
+            magnitude: -5.0
+            sep_unit: arcsec
+            sep:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 0.5
+                        maximum: 2.0
+    POINTSOURCE_2:
+        NAME: SNCC
+        MODEL: cc_random
+        HOST: SOURCE
+        PARAMETERS:
+            magnitude: -5.0
+            sep_unit: arcsec
+            sep:
+                DISTRIBUTION:
+                    NAME: uniform
+                    PARAMETERS:
+                        minimum: 0.5
+                        maximum: 2.0
+                            
+    POINTSOURCE_3:
+        NAME: Gal
+        HOST: LENS
+        MODEL: flatnoise
+        PARAMETERS:
+            magnitude: 100.0
+                    
+#DISTRIBUTIONS:
+#    USERDIST_1:
+#        FILENAME: user_dists/config_1.txt
+#        MODE: sample
+#    USERDIST_2:
+#        FILENAME: user_dists/config_2.txt
+#        MODE: sample
+#    USERDIST_3:
+#        FILENAME: user_dists/config_3.txt
+#        MODE: sample
+#    USERDIST_4:
+#        FILENAME: user_dists/config_4.txt
+#        MODE: sample
+                    
+GEOMETRY:
+    CONFIGURATION_1:
+        NAME: GalGal
+        FRACTION: 0.25
+        PLANE_1:
+            OBJECT_1: LENS
+#            OBJECT_2: Gal
+            PARAMETERS:
+                REDSHIFT: 0.5
+        PLANE_2:
+            OBJECT_1: SOURCE
+            PARAMETERS:
+                REDSHIFT: 1.0
+#        TIMESERIES:
+#            NITES: [0, 1]
+#            OBJECTS: ['Gal']
+                    
+    CONFIGURATION_2:
+        NAME: TwoGal
+        FRACTION: 0.25
+        PLANE_1:
+            OBJECT_1: LENS
+#            OBJECT_2: Gal
+            OBJECT_2: SOURCE_off_axis
+            PARAMETERS:
+                REDSHIFT: 0.5
+#        TIMESERIES:
+#            NITES: [0, 1]
+#            OBJECTS: ['Gal']
+                
+    CONFIGURATION_3:
+        NAME: LSNEIa
+        FRACTION: 0.25
+        PLANE_1:
+            OBJECT_1: LENS
+            PARAMETERS:
+                REDSHIFT: 0.5
+        PLANE_2:
+            OBJECT_1: SOURCE
+            OBJECT_2: SNIa
+            PARAMETERS:
+                REDSHIFT: 1.0
+        TIMESERIES:
+            NITES: [-12, -6, 0, 6, 12, 18, 24]
+            OBJECTS: ['SNIa']
+        
+    CONFIGURATION_4:
+        NAME: LSNECC
+        FRACTION: 0.25
+        PLANE_1:
+            OBJECT_1: LENS
+            PARAMETERS:
+                REDSHIFT: 0.5
+        PLANE_2:
+            OBJECT_1: SOURCE
+            OBJECT_2: SNCC
+            PARAMETERS:
+                REDSHIFT: 1.0
+        TIMESERIES:
+            NITES: [-12, -6, 0, 6, 12, 18, 24]
+            OBJECTS: ['SNCC']
+
+            
