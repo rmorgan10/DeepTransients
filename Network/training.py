@@ -46,7 +46,7 @@ def train_zipper(zipper, train_dataloader, train_dataset, test_dataset, validati
 
             #Performance monitoring if desired
             if monitor:
-                if i_batch % 1000 == 0:
+                if i_batch % 500 == 0:
                     train_output = zipper(train_dataset[0:validation_size]['lightcurve'], train_dataset[0:validation_size]['image'])
                     validation_output = zipper(test_dataset[0:validation_size]['lightcurve'], test_dataset[0:validation_size]['image'])
 
