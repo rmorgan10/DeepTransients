@@ -169,6 +169,8 @@ def mirror_and_rotate(data):
             outdata[key]["lcs"].append(data[key]['lcs'])
             outdata[key]["mds"].extend(data[key]['mds'])
 
+            print(key, len(outdata[key]["ims"]))
+
         # Stack results
         outdata[key]["ims"] = np.concatenate(outdata[key]["ims"])
         outdata[key]["lcs"] = np.concatenate(outdata[key]["lcs"])
