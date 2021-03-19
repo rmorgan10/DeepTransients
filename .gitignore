@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# emacs
+*~
+
+# Datasets
+Simulations/*_data/
