@@ -2,7 +2,7 @@
 DATASET:
     NAME: tester
     PARAMETERS:
-        SIZE: 40000
+        SIZE: 5000
         SEED: 7
         OUTDIR: high_cad_data
         

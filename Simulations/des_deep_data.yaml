@@ -2,7 +2,7 @@
 DATASET:
     NAME: tester
     PARAMETERS:
-        SIZE: 40000
+        SIZE: 5000
         SEED: 6
         OUTDIR: des_deep_data
         
