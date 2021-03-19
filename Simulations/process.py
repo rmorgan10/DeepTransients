@@ -188,7 +188,7 @@ def run(directory, configuration, show=True):
     outdata = process(images, metadata, band='g')
 
     # Mirror and Rotate
-    #outdata = mirror_and_rotate(outdata)
+    outdata = mirror_and_rotate(outdata)
     
     # Create arrays for each cadence length and save
     for key in outdata:
