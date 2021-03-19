@@ -147,8 +147,8 @@ SPECIES:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
-                        minimum: 0.5
-                        maximum: 2.0
+                        minimum: 0.1
+                        maximum: 0.4
     POINTSOURCE_2:
         NAME: SNCC
         MODEL: cc_random
@@ -160,8 +160,8 @@ SPECIES:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
-                        minimum: 0.5
-                        maximum: 2.0
+                        minimum: 0.1
+                        maximum: 0.4
                             
     POINTSOURCE_3:
         NAME: Gal
@@ -200,8 +200,8 @@ SPECIES:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
-                        minimum: 0.5
-                        maximum: 2.0
+                        minimum: 0.1
+                        maximum: 0.4
     POINTSOURCE_8:
         NAME: normalSNCC
         MODEL: cc_random
@@ -213,8 +213,8 @@ SPECIES:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
-                        minimum: 0.5
-                        maximum: 2.0
+                        minimum: 0.1
+                        maximum: 0.4
                 
     NOISE_1:
         NAME: POISSON_NOISE
