@@ -62,10 +62,6 @@ def scale_bands(coadded_image_arr):
         ValueError if a constant image is detected
     """
 
-    # Check for constants
-    #if np.sum(np.max(coadded_image_arr, axis=(-1, -2)) == np.min(coadded_image_arr, axis=(-1, -2))) > 0:
-    #    raise ValueError("Constant image detected")
-
     return (coadded_image_arr - coadded_image_arr.min()) / (coadded_image_arr - coadded_image_arr.min()).max()
 
 
@@ -156,7 +152,7 @@ def process(image_arr, metadata, band='g'):
             current_objid = objid
 
     # Report data loss
-    print("Losing %.1f %% (Constants)" %(float(num_errors) / float(len(outdata[key]["ims"]))))
+    print("Losing",  round(float(num_errors) / float(len(outdata[key]["ims"])) * 100, 2), "% (Constants)")
     
     return outdata
 
@@ -188,7 +184,6 @@ def mirror_and_rotate(data):
             outdata[key]["ims"].append(rotated_ims[:,:,::-1,:])
             outdata[key]["lcs"].append(data[key]['lcs'])
             outdata[key]["mds"].extend(data[key]['mds'])
-
 
         # Stack results
         outdata[key]["ims"] = np.concatenate(outdata[key]["ims"])
