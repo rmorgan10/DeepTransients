@@ -29,11 +29,33 @@ def filter_nans(images, metadata, band='g'):
     full_mask = np.array([x in bad_objids for x in metadata[f'OBJID-{band}'].values])
     
     # Determine the data loss
-    print("losing", round(sum(full_mask) / len(images) * 100, 2), "%")
+    print("losing", round(sum(full_mask) / len(images) * 100, 2), "% (NaNs)")
     
     # Apply the mask and return
     return images[~full_mask], metadata[~full_mask].copy().reset_index(drop=True)
 
+def filter_constants(images, metadata, band='g'):
+    """
+    Remove if all bands are a constant pixel value and remove
+
+    Args:
+        images (np.array): shape (N, <num_bands>, <height>, <width>)
+        metadata (pd.DataFrame): length N dataframe of metadata 
+        band (str, default='g'): band to use for metadata 
+
+    Returns:
+        images where a constant image was not detected
+        metadate where a constant image was not detected
+    """
+    mask = (np.max(images, axis=(-1, -2, -3)) == np.min(images, axis=(-1, -2, -3)))
+    bad_objids = metadata[f'OBJID-{band}'].values[mask]
+    full_mask = np.array([x in bad_objids for x in metadata[f'OBJID-{band}'].values])
+
+    # Determine the data loss
+    print("losing", round(sum(full_mask) / len(images) * 100, 2), "% (Constnats)")
+
+    # Apply the mask and return
+    return images[~full_mask], metadata[~full_mask].copy().reset_index(drop=True)
 
 def coadd_bands(image_arr):
     """
@@ -100,6 +122,7 @@ def process(image_arr, metadata, band='g'):
     """
     # Clean the data
     clean_ims, clean_md = filter_nans(image_arr, metadata)
+    clean_ims, clean_md = filter_constants(clean_ims, clean_md)
     
     # Separate by cadence length
     outdata = {}
