@@ -34,29 +34,6 @@ def filter_nans(images, metadata, band='g'):
     # Apply the mask and return
     return images[~full_mask], metadata[~full_mask].copy().reset_index(drop=True)
 
-def filter_constants(images, metadata, band='g'):
-    """
-    Remove if all bands are a constant pixel value and remove
-
-    Args:
-        images (np.array): shape (N, <num_bands>, <height>, <width>)
-        metadata (pd.DataFrame): length N dataframe of metadata 
-        band (str, default='g'): band to use for metadata 
-
-    Returns:
-        images where a constant image was not detected
-        metadate where a constant image was not detected
-    """
-    mask = (np.max(images, axis=(-1, -2, -3)) == np.min(images, axis=(-1, -2, -3)))
-    bad_objids = metadata[f'OBJID-{band}'].values[mask]
-    full_mask = np.array([x in bad_objids for x in metadata[f'OBJID-{band}'].values])
-
-    # Determine the data loss
-    print("losing", round(sum(full_mask) / len(images) * 100, 2), "% (Constnats)")
-
-    # Apply the mask and return
-    return images[~full_mask], metadata[~full_mask].copy().reset_index(drop=True)
-
 def coadd_bands(image_arr):
     """
     Average an array of images in each band
@@ -78,7 +55,15 @@ def scale_bands(coadded_image_arr):
         
     Returns:
         scaled array with shape (<num_bands>, <height>, <width>)
+
+    Raises:
+        ValueError if a constant image is detected
     """
+
+    # Check for constants
+    if sum(np.max(coadded_image_arr, axis=(-1, -2)) == np.min(coadded_image_arr, axis=(-1, -2))) > 0:
+        raise ValueError("Constant image detected")
+
     return (coadded_image_arr - coadded_image_arr.min()) / (coadded_image_arr - coadded_image_arr.min()).max()
 
 
@@ -122,18 +107,21 @@ def process(image_arr, metadata, band='g'):
     """
     # Clean the data
     clean_ims, clean_md = filter_nans(image_arr, metadata)
-    clean_ims, clean_md = filter_constants(clean_ims, clean_md)
+
+    # Track the data loss due to errors
+    num_errors = 0
     
     # Separate by cadence length
     outdata = {}
     
     # Iterate through data
-    out_ims, out_lcs = [], []
     current_objid = clean_md[f'OBJID-{band}'].values.min()
     prev_idx = 0
     for idx, objid in enumerate(clean_md[f'OBJID-{band}'].values):
         
         if objid != current_objid:
+            # Define error flag
+            error = False
             
             # Select the object
             example = clean_ims[prev_idx:idx,:,:,:]
@@ -146,21 +134,28 @@ def process(image_arr, metadata, band='g'):
             if key not in outdata:
                 outdata[key] = {"ims": [], 'lcs': [], 'mds': []}
             
-            # Coadd and scale the images
-            processed_ims = scale_bands(coadd_bands(example))
-            
-            # Measure and scale the lightcurves
-            processed_lcs = scale_bands(extract_lightcurves(example))
+            # Coadd and scale the images - skip if error raised
+            try:
+                processed_ims = scale_bands(coadd_bands(example))
+                processed_lcs = scale_bands(extract_lightcurves(example))
+            except ValueError:
+                # skip example if constant image detected
+                error = True
+                num_errors += 1
 
-            # Append to output
-            outdata[key]["ims"].append(processed_ims)
-            outdata[key]["lcs"].append(processed_lcs)
-            outdata[key]["mds"].append(example_md)
+            if not error:
+                # Append to output
+                outdata[key]["ims"].append(processed_ims)
+                outdata[key]["lcs"].append(processed_lcs)
+                outdata[key]["mds"].append(example_md)
 
             # Update trackers
             prev_idx = idx
             current_objid = objid
-            
+
+    # Report data loss
+    print("Losing %.2f %% (Constants)" %(num_errors / len(outdata[key]["ims"])))
+    
     return outdata
 
 def mirror_and_rotate(data):
