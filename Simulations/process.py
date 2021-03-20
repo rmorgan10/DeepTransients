@@ -8,6 +8,8 @@ import numpy as np
 import pandas as pd
 from scipy import ndimage
 
+# Force numpy to raise an exception on div by zero
+np.seterr(all='raise')
 
 def filter_nans(images, metadata, band='g'):
     """
@@ -61,8 +63,8 @@ def scale_bands(coadded_image_arr):
     """
 
     # Check for constants
-    if np.sum(np.max(coadded_image_arr, axis=(-1, -2)) == np.min(coadded_image_arr, axis=(-1, -2))) > 0:
-        raise ValueError("Constant image detected")
+    #if np.sum(np.max(coadded_image_arr, axis=(-1, -2)) == np.min(coadded_image_arr, axis=(-1, -2))) > 0:
+    #    raise ValueError("Constant image detected")
 
     return (coadded_image_arr - coadded_image_arr.min()) / (coadded_image_arr - coadded_image_arr.min()).max()
 
@@ -138,7 +140,7 @@ def process(image_arr, metadata, band='g'):
             try:
                 processed_ims = scale_bands(coadd_bands(example))
                 processed_lcs = scale_bands(extract_lightcurves(example))
-            except ValueError:
+            except FloatingPointError:
                 # skip example if constant image detected
                 error = True
                 num_errors += 1
@@ -154,7 +156,7 @@ def process(image_arr, metadata, band='g'):
             current_objid = objid
 
     # Report data loss
-    print("Losing %.2f %% (Constants)" %(num_errors / len(outdata[key]["ims"])))
+    print("Losing %.1f %% (Constants)" %(float(num_errors) / float(len(outdata[key]["ims"]))))
     
     return outdata
 
