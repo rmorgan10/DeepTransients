@@ -61,7 +61,7 @@ def scale_bands(coadded_image_arr):
     """
 
     # Check for constants
-    if sum((np.max(coadded_image_arr, axis=(-1, -2)) == np.min(coadded_image_arr, axis=(-1, -2)))) > 0:
+    if np.sum(np.max(coadded_image_arr, axis=(-1, -2)) == np.min(coadded_image_arr, axis=(-1, -2))) > 0:
         raise ValueError("Constant image detected")
 
     return (coadded_image_arr - coadded_image_arr.min()) / (coadded_image_arr - coadded_image_arr.min()).max()
