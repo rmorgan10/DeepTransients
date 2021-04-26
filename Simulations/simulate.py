@@ -13,6 +13,6 @@ dataset_name = utils.get_dataset_name()
 dataset = dl.make_dataset(f"{dataset_name}.yaml", 
                           store_in_memory=False, 
                           save_to_disk=True, 
-                          verbose=True, 
-                          solve_lens_equation=True)
+                          verbose=True)#, 
+#                          solve_lens_equation=False)
 
