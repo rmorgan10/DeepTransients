@@ -18,7 +18,7 @@ def get_dataset_name():
     """
 
     # Set allowed dataset names
-    datasets = ['full_data', 'high_cad_data', 'lsst_data', 'des_deep_data']
+    datasets = ['full_data', 'high_cad_data', 'lsst_data', 'des_deep_data', 'test_data']
 
     # Get dataset name
     try:
@@ -27,8 +27,10 @@ def get_dataset_name():
         raise KeyError("No dataset name was passed as a command line arg")
 
     # Check that the name is valid
+    force = "--force" in sys.argv
     if dataset_name not in datasets:
-        raise ValueError(f"{dataset_name} is not a valid dataset")
+        if not force:
+            raise ValueError(f"{dataset_name} is not a valid dataset")
 
     return dataset_name
 
