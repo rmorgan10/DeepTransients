@@ -20,7 +20,11 @@ def save_performance(directory, file_prefix, prev_network, test_dataset):
     """
     # Load best network
     network = ZipperNN(4, 4, 4)
-    network.load_state_dict(torch.load(f"{directory}/{file_prefix}_network.pt"))
+    if file_prefix.endswith('_train'):
+        net_name = file_prefix[:-6]
+    else:
+        net_name = file_prefix
+    network.load_state_dict(torch.load(f"{directory}/{net_name}_network.pt"))
     network.eval()
     
     # Save classifications
