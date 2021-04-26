@@ -83,6 +83,16 @@ SPECIES:
                 n_sersic: 0.0 # Overwritten by USERDIST
                 e1: 0.0 # Overwritten by USERDIST
                 e2: 0.0 # Overwritten by USERDIST
+
+        MASS_PROFILE_1:
+            NAME: SIE
+            PARAMETERS:
+                theta_E: 1.0 # Overwritten by USERDIST
+                e1: 0.0 # Overwritten by USERDIST
+                e2: 0.0 # Overwritten by USERDIST
+                center_x: 0.0
+                center_y: 0.0
+
                     
     GALAXY_3:
         NAME: SOURCE_off_axis
@@ -106,7 +116,16 @@ SPECIES:
                         PARAMETERS:
                             r1: 1.0
                             r2: 4.0
-                                
+                       
+        MASS_PROFILE_1:
+            NAME: SIE
+            PARAMETERS:
+                theta_E: 1.0 # Overwritten by USERDIST
+                e1: 0.0 # Overwritten by USERDIST
+                e2: 0.0 # Overwritten by USERDIST
+                center_x: 0.0
+                center_y: 0.0
+         
     GALAXY_4:
         NAME: DarkGalaxy
         LIGHT_PROFILE_1:
@@ -119,6 +138,16 @@ SPECIES:
                 e2: 0.0
                 center_x: 0.0
                 center_y: 0.0
+
+        MASS_PROFILE_1:
+            NAME: SIE
+            PARAMETERS:
+                theta_E: 1.0 # Overwritten by USERDIST
+                e1: 0.0 # Overwritten by USERDIST
+                e2: 0.0 # Overwritten by USERDIST
+                center_x: 0.0
+                center_y: 0.0
+
         SHEAR_PROFILE_1: 
             NAME: SHEAR
             PARAMETERS:
@@ -305,6 +334,11 @@ GEOMETRY:
             OBJECT_3: SOURCE_off_axis
             PARAMETERS:
                 REDSHIFT: 0.5 # Overwritten by USERDIST
+
+        PLANE_2:
+            OBJECT_1: DarkGalaxy
+            PARAMETERS:
+                REDSHIFT: 2.0
         TIMESERIES:
             NITES: des_cadence.yaml
             OBJECTS: ['Gal']
@@ -372,6 +406,10 @@ GEOMETRY:
             OBJECT_2: Gal
             PARAMETERS:
                 REDSHIFT: 0.5 # Overwritten by USERDIST
+        PLANE_2:
+            OBJECT_1: DarkGalaxy
+            PARAMETERS:
+                REDSHIFT: 2.0
 
         TIMESERIES:
             NITES: des_cadence.yaml
@@ -421,6 +459,10 @@ GEOMETRY:
             OBJECT_4: Star
             PARAMETERS:
                 REDSHIFT: 0.5 # Overwritten by USERDIST
+        PLANE_2:
+            OBJECT_1: DarkGalaxy
+            PARAMETERS:
+                REDSHIFT: 2.0
         TIMESERIES:
             NITES: des_cadence.yaml
             OBJECTS: ['Gal']
@@ -491,6 +533,10 @@ GEOMETRY:
             OBJECT_3: Star
             PARAMETERS:
                 REDSHIFT: 0.5 # Overwritten by USERDIST
+        PLANE_2:
+            OBJECT_1: DarkGalaxy
+            PARAMETERS:
+                REDSHIFT: 2.0
         TIMESERIES:
             NITES: des_cadence.yaml
             OBJECTS: ['Gal']
@@ -521,7 +567,11 @@ GEOMETRY:
             OBJECT_1: DarkGalaxy
             OBJECT_2: Gal2
             PARAMETERS: 
-                REDSHIFT: 0.1                    
+                REDSHIFT: 0.1 
+        PLANE_2:
+            OBJECT_1: DarkGalaxy
+            PARAMETERS:
+                REDSHIFT: 2.0                   
         TIMESERIES:
             NITES: des_cadence.yaml
             OBJECTS: ['Gal2']
@@ -543,6 +593,10 @@ GEOMETRY:
                         PARAMETERS:
                             minimum: 0.001
                             maximum: 0.01
+        PLANE_2:
+            OBJECT_1: DarkGalaxy
+            PARAMETERS:
+                REDSHIFT: 2.0
         TIMESERIES:
             NITES: des_cadence.yaml
             OBJECTS: ['Gal2']
@@ -562,6 +616,10 @@ GEOMETRY:
                         PARAMETERS:
                             minimum: 0.001
                             maximum: 0.01
+        PLANE_2:
+            OBJECT_1: DarkGalaxy
+            PARAMETERS:
+                REDSHIFT: 2.0
         TIMESERIES:
             NITES: des_cadence.yaml
             OBJECTS: ['Gal2']
@@ -579,6 +637,10 @@ GEOMETRY:
                         PARAMETERS:
                             minimum: 0.03
                             maximum: 0.8
+        PLANE_2:
+            OBJECT_1: DarkGalaxy
+            PARAMETERS:
+                REDSHIFT: 2.0
         TIMESERIES:
             NITES: des_cadence.yaml
             OBJECTS: ['normalSNIa']
@@ -602,6 +664,10 @@ GEOMETRY:
                         PARAMETERS:
                             minimum: 0.03
                             maximum: 0.8
+        PLANE_2:
+            OBJECT_1: DarkGalaxy
+            PARAMETERS:
+                REDSHIFT: 2.0
         TIMESERIES:
             NITES: des_cadence.yaml
             OBJECTS: ['normalSNCC']
