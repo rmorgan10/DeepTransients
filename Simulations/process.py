@@ -81,7 +81,7 @@ def extract_lightcurves(images, aperture_rad=20):
     center = int(round(np.shape(images)[-1] / 2))
     dist = np.sqrt((xx - center) ** 2 + (yy - center) ** 2)
     dist = np.sqrt((xx - center) ** 2 + (yy - center) ** 2)
-    aperature = (dist <= 20)
+    aperature = (dist <= 15)
     
     # make time measurements
     sum_in_aperature = np.sum(images[:,:,aperature], axis=-1)
@@ -122,10 +122,10 @@ def process(image_arr, metadata, band='g'):
             error = False
             
             # Select the object
-            example = clean_ims[prev_idx:idx,:,:,:]
+            example = clean_ims[prev_idx:idx-1,:,:,:]
             
             # Select the metadata
-            example_md = clean_md.loc[prev_idx:idx]
+            example_md = clean_md.loc[prev_idx:idx-1]
             
             # Determine cadence length
             key = len(example)
