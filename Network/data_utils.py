@@ -54,7 +54,7 @@ class ToCombinedTensor(object):
 
 
 
-def make_train_test_datasets(directory: str, class_names: list, suffix: int, transform=ToCombinedTensor()):
+def make_train_test_datasets(directory: str, class_names: list, suffix: int, transform=ToCombinedTensor(), label_map={}):
     images, lightcurves, labels, metadata = [], [], [], []
 
     # Ingest and label data
@@ -71,7 +71,9 @@ def make_train_test_datasets(directory: str, class_names: list, suffix: int, tra
         images.append(im.reshape((len(im), 4, 45, 45)))
         
         # Labels
-        labels.extend([label]*len(im))
+        class_label = label_map[class_name] if class_name in label_map else label
+        print(class_label)
+        labels.extend([class_label]*len(im))
         
         # Metadata
         md_file = f'{directory}/{class_name}_mds_{suffix}.npy'
