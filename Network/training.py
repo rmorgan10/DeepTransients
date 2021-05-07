@@ -11,7 +11,7 @@ def train_zipper(zipper, train_dataloader, train_dataset, test_dataset, validati
     
     zipper.train()
     
-    number_of_training_epochs = 2
+    number_of_training_epochs = 40
     if validation_size is None:
         validation_size=len(test_dataset)
     loss_function = nn.CrossEntropyLoss()
@@ -80,7 +80,7 @@ def train_single(network, train_dataloader, train_dataset, test_dataset, datatyp
     
     network.train()
 
-    number_of_training_epochs = 2
+    number_of_training_epochs = 20
     if validation_size is None:
         validation_size=len(test_dataset)
     loss_function = nn.CrossEntropyLoss()
