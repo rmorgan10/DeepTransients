@@ -364,8 +364,8 @@ GEOMETRY:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
-                        minimum: 0
-                        maximum: 180
+                        minimum: -20
+                        maximum: 200
         
     CONFIGURATION_4:
         NAME: LSNECC
@@ -391,8 +391,8 @@ GEOMETRY:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
-                        minimum: 0
-                        maximum: 180
+                        minimum: -20
+                        maximum: 200
                 
     CONFIGURATION_5:
         NAME: JustAGalaxy
@@ -489,8 +489,8 @@ GEOMETRY:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
-                        minimum: 0
-                        maximum: 180
+                        minimum: -20
+                        maximum: 200
         
     CONFIGURATION_10:
         NAME: LSNECCWithStar
@@ -517,8 +517,8 @@ GEOMETRY:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
-                        minimum: 0
-                        maximum: 180
+                        minimum: -20
+                        maximum: 200
                 
     CONFIGURATION_11:
         NAME: JustAGalaxyWithStar
@@ -644,8 +644,8 @@ GEOMETRY:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
-                        minimum: 0
-                        maximum: 180
+                        minimum: -20
+                        maximum: 200
                                 
     CONFIGURATION_17:
         NAME: JustASNCC
@@ -671,6 +671,6 @@ GEOMETRY:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
-                        minimum: 0
-                        maximum: 180
+                        minimum: -20
+                        maximum: 200
   
