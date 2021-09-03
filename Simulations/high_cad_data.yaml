@@ -319,7 +319,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 1.0 # Overwritten by USERDIST
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['Gal']
                     
     CONFIGURATION_2:
@@ -336,7 +336,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 2.0
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['Gal']
                 
     CONFIGURATION_3:
@@ -358,14 +358,14 @@ GEOMETRY:
                             minimum: 0.3
                             maximum: 1.2
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['SNIa']
             PEAK:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
                         minimum: -20
-                        maximum: 80
+                        maximum: 62
         
     CONFIGURATION_4:
         NAME: LSNECC
@@ -385,14 +385,14 @@ GEOMETRY:
                             minimum: 0.3
                             maximum: 1.2
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['SNCC']
             PEAK:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
                         minimum: -20
-                        maximum: 80
+                        maximum: 62
                 
     CONFIGURATION_5:
         NAME: JustAGalaxy
@@ -407,7 +407,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 2.0
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['Gal']
                 
     CONFIGURATION_6:
@@ -424,7 +424,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 1.0 # Overwritten by USERDIST
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['Gal']
 
     CONFIGURATION_7:
@@ -441,7 +441,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 1.0 # Overwritten by USERDIST
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['Gal']
                     
     CONFIGURATION_8:
@@ -460,7 +460,7 @@ GEOMETRY:
                 REDSHIFT: 2.0
 
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['Gal']
                 
     CONFIGURATION_9:
@@ -483,14 +483,14 @@ GEOMETRY:
                             minimum: 0.3
                             maximum: 1.2
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['SNIa']
             PEAK:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
                         minimum: -20
-                        maximum: 80
+                        maximum: 62
         
     CONFIGURATION_10:
         NAME: LSNECCWithStar
@@ -511,14 +511,14 @@ GEOMETRY:
                             minimum: 0.3
                             maximum: 1.2
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['SNCC']
             PEAK:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
                         minimum: -20
-                        maximum: 80
+                        maximum: 62
                 
     CONFIGURATION_11:
         NAME: JustAGalaxyWithStar
@@ -535,7 +535,7 @@ GEOMETRY:
                 REDSHIFT: 2.0
 
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['Gal']
                 
     CONFIGURATION_12:
@@ -553,7 +553,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 1.0 # Overwritten by USERDIST
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['Gal']
 
                 
@@ -572,7 +572,7 @@ GEOMETRY:
                 REDSHIFT: 2.0
 
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['Gal2']
         NOISE_SOURCE_1: POISSON_NOISE
             
@@ -598,7 +598,7 @@ GEOMETRY:
                 REDSHIFT: 2.0
 
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['Gal2']
                 
     CONFIGURATION_15:
@@ -623,7 +623,7 @@ GEOMETRY:
                 REDSHIFT: 2.0
 
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60] 
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['Gal2']
   
     CONFIGURATION_16:
@@ -645,14 +645,14 @@ GEOMETRY:
                 REDSHIFT: 2.0
 
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60]
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['normalSNIa']
             PEAK:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
                         minimum: -20
-                        maximum: 80
+                        maximum: 62
                                 
     CONFIGURATION_17:
         NAME: JustASNCC
@@ -673,11 +673,11 @@ GEOMETRY:
                 REDSHIFT: 2.0
 
         TIMESERIES:
-            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60]
+            NITES: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
             OBJECTS: ['normalSNCC']
             PEAK:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
                         minimum: -20
-                        maximum: 80
+                        maximum: 62

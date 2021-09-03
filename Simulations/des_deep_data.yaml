@@ -319,7 +319,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 1.0 # Overwritten by USERDIST
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['Gal']
                     
     CONFIGURATION_2:
@@ -336,7 +336,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 2.0
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['Gal']
                 
     CONFIGURATION_3:
@@ -358,14 +358,14 @@ GEOMETRY:
                             minimum: 0.3
                             maximum: 1.2
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['SNIa']
             PEAK:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
                         minimum: -20
-                        maximum: 200
+                        maximum: 118
         
     CONFIGURATION_4:
         NAME: LSNECC
@@ -385,14 +385,14 @@ GEOMETRY:
                             minimum: 0.3
                             maximum: 1.2
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['SNCC']
             PEAK:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
                         minimum: -20
-                        maximum: 200
+                        maximum: 118
                 
     CONFIGURATION_5:
         NAME: JustAGalaxy
@@ -408,7 +408,7 @@ GEOMETRY:
                 REDSHIFT: 2.0
 
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['Gal']
                 
     CONFIGURATION_6:
@@ -425,7 +425,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 1.0 # Overwritten by USERDIST
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['Gal']
 
     CONFIGURATION_7:
@@ -442,7 +442,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 1.0 # Overwritten by USERDIST
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['Gal']
                     
     CONFIGURATION_8:
@@ -460,7 +460,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 2.0
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['Gal']
                 
     CONFIGURATION_9:
@@ -483,14 +483,14 @@ GEOMETRY:
                             minimum: 0.3
                             maximum: 1.2
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['SNIa']
             PEAK:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
                         minimum: -20
-                        maximum: 200
+                        maximum: 118
         
     CONFIGURATION_10:
         NAME: LSNECCWithStar
@@ -511,14 +511,14 @@ GEOMETRY:
                             minimum: 0.3
                             maximum: 1.2
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['SNCC']
             PEAK:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
                         minimum: -20
-                        maximum: 200
+                        maximum: 118
                 
     CONFIGURATION_11:
         NAME: JustAGalaxyWithStar
@@ -534,7 +534,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 2.0
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['Gal']
                 
     CONFIGURATION_12:
@@ -552,7 +552,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 1.0 # Overwritten by USERDIST
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['Gal']
 
                 
@@ -569,7 +569,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 2.0                    
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['Gal2']
         NOISE_SOURCE_1: POISSON_NOISE
             
@@ -594,7 +594,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 2.0
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['Gal2']
                 
     CONFIGURATION_15:
@@ -617,7 +617,7 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 2.0
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['Gal2']
                 
     CONFIGURATION_16:
@@ -638,14 +638,14 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 2.0
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['normalSNIa']
             PEAK:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
                         minimum: -20
-                        maximum: 200
+                        maximum: 118
                                 
     CONFIGURATION_17:
         NAME: JustASNCC
@@ -665,12 +665,12 @@ GEOMETRY:
             PARAMETERS:
                 REDSHIFT: 2.0
         TIMESERIES:
-            NITES: des_deep_cadence.yaml
+            NITES: [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98] # des_deep_cadence.yaml
             OBJECTS: ['normalSNCC']
             PEAK:
                 DISTRIBUTION:
                     NAME: uniform
                     PARAMETERS:
                         minimum: -20
-                        maximum: 200
+                        maximum: 118
   
